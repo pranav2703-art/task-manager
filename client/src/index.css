@@ -1,0 +1,138 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #f5f4f0;
+  --surface: #ffffff;
+  --surface2: #f0efe9;
+  --border: rgba(0,0,0,0.08);
+  --border-md: rgba(0,0,0,0.14);
+  --text: #1a1a18;
+  --text-2: #6b6b65;
+  --text-3: #9e9e97;
+  --blue: #378ADD;
+  --blue-bg: #E6F1FB;
+  --blue-text: #0C447C;
+  --green: #639922;
+  --green-bg: #EAF3DE;
+  --green-text: #27500A;
+  --amber: #EF9F27;
+  --amber-bg: #FAEEDA;
+  --amber-text: #633806;
+  --red: #E24B4A;
+  --red-bg: #FCEBEB;
+  --red-text: #791F1F;
+  --coral-bg: #FAECE7;
+  --coral-text: #712B13;
+  --purple-bg: #EEEDFE;
+  --purple-text: #3C3489;
+  --radius: 8px;
+  --radius-lg: 12px;
+  --shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+button { font-family: inherit; cursor: pointer; }
+input, textarea, select { font-family: inherit; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border-md); border-radius: 3px; }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px; border-radius: var(--radius);
+  border: 0.5px solid var(--border-md);
+  background: var(--surface); color: var(--text);
+  font-size: 13px; font-weight: 500; transition: all 0.15s;
+}
+.btn:hover { background: var(--surface2); }
+.btn-primary {
+  background: var(--text); color: var(--surface);
+  border-color: var(--text);
+}
+.btn-primary:hover { opacity: 0.85; background: var(--text); }
+.btn-danger { background: var(--red-bg); color: var(--red-text); border-color: transparent; }
+.btn-danger:hover { opacity: 0.85; }
+
+.tag {
+  display: inline-block; font-size: 10px; font-weight: 500;
+  border-radius: 4px; padding: 2px 7px; white-space: nowrap;
+}
+.tag-Backend, .tag-Database, .tag-Docs { background: var(--green-bg); color: var(--green-text); }
+.tag-Frontend, .tag-UI\/UX { background: var(--blue-bg); color: var(--blue-text); }
+.tag-Security { background: var(--coral-bg); color: var(--coral-text); }
+.tag-DevOps, .tag-General { background: var(--purple-bg); color: var(--purple-text); }
+.tag-Other { background: var(--surface2); color: var(--text-2); }
+
+.priority-dot {
+  width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
+}
+.priority-high { background: var(--red); }
+.priority-medium { background: var(--amber); }
+.priority-low { background: var(--green); }
+
+.avatar {
+  width: 26px; height: 26px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 600; flex-shrink: 0;
+}
+.color-purple { background: var(--purple-bg); color: var(--purple-text); }
+.color-teal { background: #E1F5EE; color: #085041; }
+.color-coral { background: var(--coral-bg); color: var(--coral-text); }
+.color-amber { background: var(--amber-bg); color: var(--amber-text); }
+.color-blue { background: var(--blue-bg); color: var(--blue-text); }
+
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.35);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100; padding: 1rem;
+}
+.modal {
+  background: var(--surface); border-radius: var(--radius-lg);
+  width: 100%; max-width: 480px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  animation: slide-up 0.2s ease;
+}
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group { margin-bottom: 16px; }
+.form-group label {
+  display: block; font-size: 12px; font-weight: 500;
+  color: var(--text-2); margin-bottom: 6px;
+}
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%; padding: 8px 10px; border-radius: var(--radius);
+  border: 0.5px solid var(--border-md);
+  background: var(--surface); color: var(--text);
+  font-size: 13px; transition: border-color 0.15s;
+}
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  outline: none; border-color: var(--blue);
+  box-shadow: 0 0 0 3px rgba(55,138,221,0.12);
+}
+.form-group textarea { resize: vertical; min-height: 80px; }
+
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
