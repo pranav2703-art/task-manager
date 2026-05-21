@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-const api = axios.create({ baseURL: '/api' });
 
 export const getTasks = (params) => api.get('/tasks', { params });
 export const createTask = (data) => api.post('/tasks', data);
@@ -16,3 +15,10 @@ export const getUsers = () => api.get('/users');
 export const getActivities = (params) => api.get('/activities', { params });
 
 export default api;
+import axios from 'axios';
+
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL
+    ? `${process.env.REACT_APP_API_URL}/api`
+    : '/api'
+});

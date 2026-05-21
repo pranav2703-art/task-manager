@@ -25,7 +25,7 @@ export default function App() {
 
   // Socket setup
   useEffect(() => {
-    const socket = io('http://localhost:5000');
+    const socket = io(process.env.REACT_APP_API_URL || 'http://localhost:5000');
     socketRef.current = socket;
     socket.on('connect', () => setConnected(true));
     socket.on('disconnect', () => setConnected(false));
