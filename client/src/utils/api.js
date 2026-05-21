@@ -15,7 +15,7 @@ export const getUsers = () => api.get('/users');
 export const getActivities = (params) => api.get('/activities', { params });
 
 export default api;
-import axios from 'axios';
+
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL
