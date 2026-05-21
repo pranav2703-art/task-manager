@@ -1,4 +1,7 @@
 require('dotenv').config();
+console.log('Starting server...');
+console.log('MONGO_URI set:', !!process.env.MONGO_URI);
+console.log('PORT:', process.env.PORT);
 const express = require('express');
 const http = require('http');
 const { Server } = require('socket.io');
@@ -9,6 +12,7 @@ const taskRoutes = require('./routes/tasks');
 const projectRoutes = require('./routes/projects');
 const userRoutes = require('./routes/users');
 const activityRoutes = require('./routes/activities');
+const { connect } = require('http2');
 
 const app = express();
 const httpServer = http.createServer(app);
@@ -21,8 +25,12 @@ const io = new Server(httpServer, {
 });
 
 // Connect to MongoDB
+// Connect to MongoDB
 connectDB();
-
+connectDB().catch((err) => {
+  console.error('Failed to connect to MongoDB:', err.message);
+  process.exit(1);
+});
 // Middleware
 app.use(cors({ origin: process.env.CLIENT_URL || 'http://localhost:3000' }));
 app.use(express.json());
